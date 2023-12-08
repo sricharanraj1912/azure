@@ -1,0 +1,130 @@
+https://kpmgstorage1912.blob.core.windows.net/abc/download.jpg(pune)
+
+https://kpmgstorage1912-secondary.blob.core.windows.net/abc/download.jpg
+
+producton:
+https://sricharanwebapp.azurewebsites.net/
+
+canary:
+https://sricharanwebapp-canary.azurewebsites.net/
+
+github: https://github.com/Azure-Samples/php-docs-hello-world
+
+
+Requesting a Cloud Shell.Succeeded. 
+Connecting terminal...
+
+Welcome to Azure Cloud Shell
+
+Type "az" to use Azure CLI
+Type "help" to learn about Cloud Shell
+
+Storage fileshare subscription 42b0f589-5abf-497f-968c-6c10da4b1b18 is not registered to Microsoft.CloudShell Namespace. Please follow these instructions "https://aka.ms/RegisterCloudShell" to register. In future, unregistered subscriptions will have restricted access to CloudShell service.
+
+sricharan [ ~ ]$ ls
+clouddrive
+sricharan [ ~ ]$ az group create --name sricharanRG1 --location eastus
+{
+  "id": "/subscriptions/42b0f589-5abf-497f-968c-6c10da4b1b18/resourceGroups/sricharanRG1",
+  "location": "eastus",
+  "managedBy": null,
+  "name": "sricharanRG1",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}
+sricharan [ ~ ]$ gitrepo=https://github.com/Azure-Samples/php-docs-hello-world
+sricharan [ ~ ]$ echo $gitrepo
+https://github.com/Azure-Samples/php-docs-hello-world
+sricharan [ ~ ]$ az webapp deployment source config --name sriphp1234 --resource-group day3 --repo-url $gitrepo --branch master --manual-integration
+{
+  "branch": "master",
+  "deploymentRollbackEnabled": false,
+  "gitHubActionConfiguration": null,
+  "id": "/subscriptions/42b0f589-5abf-497f-968c-6c10da4b1b18/resourceGroups/day3/providers/Microsoft.Web/sites/sriphp1234/sourcecontrols/web",
+  "isGitHubAction": false,
+  "isManualIntegration": true,
+  "isMercurial": false,
+  "kind": null,
+  "location": "East US",
+  "name": "sriphp1234",
+  "repoUrl": "https://github.com/Azure-Samples/php-docs-hello-world",
+  "resourceGroup": "day3",
+  "type": "Microsoft.Web/sites/sourcecontrols"
+
+
+
+all labs:
+https://microsoftlearning.github.io/AZ-204-DevelopingSolutionsforMicrosoftAzure/
+
+LAB3 = https://microsoftlearning.github.io/AZ-204-DevelopingSolutionsforMicrosoftAzure/Instructions/Labs/AZ-204_lab_03.html
+
+
+tables-day1 storage account
+https://kpmgstorage1912.table.core.windows.net/kpmgtab
+
+table service SaS url: https://kpmgstorage1912.table.core.windows.net/kpmgtab?sv=2022-11-02&ss=t&srt=s&sp=rwdlacu&se=2023-12-12T17:05:50Z&st=2023-12-06T09:05:50Z&spr=https&sig=gX5DDVfJcGuGg0kVwuntQAJBiZjmPGvfP15JIdJgOu8%3D
+ 
+https://kpmgstorage1912.table.core.windows.net/kpmgtab?sv=2022-11-02&ss=t&srt=sco&sp=rwdlacu&se=2023-12-12T17:05:50Z&st=2023-12-06T09:05:50Z&spr=https&si
+V1uH%2FJnV2ze3jQ8%3D
+
+https://microsoftlearning.github.io/AZ-204-DevelopingSolutionsforMicrosoftAzure/
+
+LAB3 = https://microsoftlearning.github.io/AZ-204-DevelopingSolutionsforMicrosoftAzure/Instructions/Labs/AZ-204_lab_03.html
+
+https://www.postman.com/downloads/
+
+
+using Azure;
+using Azure.Storage.Queues;
+using Azure.Storage.Queues.Models;
+using System;
+using System.Threading.Tasks;
+//dotnet add package Azure.Storage.Queues --version 12.0.0
+public class Program
+{
+    private const string storageConnectionString = "";
+    private const string queueName = "kq1";
+
+    public static async Task Main(string[] args)
+    {
+        QueueClient client = new QueueClient(storageConnectionString, queueName);        
+        await client.CreateAsync();
+
+        Console.WriteLine($"---Account Metdata---");
+        Console.WriteLine($"Account Uri:\t{client.Uri}");
+
+        /*Console.WriteLine($"---Existing Messages---");
+        int batchSize = 10;
+        TimeSpan visibilityTimeout = TimeSpan.FromSeconds(2.5d);
+        
+        Response<QueueMessage[]> messages = await client.ReceiveMessagesAsync(batchSize, visibilityTimeout);
+
+        foreach(QueueMessage message in messages?.Value)
+        {
+            Console.WriteLine($"[{message.MessageId}]\t{message.MessageText}");
+            await client.DeleteMessageAsync(message.MessageId, message.PopReceipt);
+        }*/
+
+        Console.WriteLine($"---New Messages---");
+        string greeting = "Hi, KPMG!";
+        await client.SendMessageAsync(greeting);
+
+        Console.WriteLine($"Sent Message:\t{greeting}");
+    }
+}
+
+
+
+practice lab
+https://microsoftlearning.github.io/dp-203-azure-data-engineer/
+
+https://microsoftlearning.github.io/AZ-204-DevelopingSolutionsforMicrosoftAzure/
+
+
+https://github.com/cloudsecuritylabs/AZ-900-LABS-FROM-GITHUB-NOV2020/blob/main/AZ-900-Microsoft_Azure_Fundamentals_Hands_On_Labs_Videos.md
+
+
+search az900 or az400 go down doen choose self paced
